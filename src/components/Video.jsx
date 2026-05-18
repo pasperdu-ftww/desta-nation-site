@@ -6,7 +6,6 @@ export default function Video() {
 
   function openVideo() {
     setOpen(true)
-    // Small delay to ensure the video element is mounted/visible
     setTimeout(() => videoRef.current?.play().catch(() => {}), 50)
   }
 
@@ -46,10 +45,10 @@ export default function Video() {
               <img
                 src="https://pub-1948b1b1579d47bc8925ba58d337f804.r2.dev/the-sophie-project/Sophie2026.png"
                 alt="Sophie"
-                className="sophie-portrait"
+                className="video-thumb-hero"
               />
               <div className="play-ring">
-                <svg width="16" height="18" viewBox="0 0 16 18" fill="none">
+                <svg width="18" height="20" viewBox="0 0 16 18" fill="none">
                   <path d="M2 1.5L14 9L2 16.5V1.5Z" fill="#0E1C30" />
                 </svg>
               </div>

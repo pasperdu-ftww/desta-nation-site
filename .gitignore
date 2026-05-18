@@ -5,3 +5,6 @@ dist
 .env.local
 *.log
 .vite
+
+# Local Netlify folder
+.netlify

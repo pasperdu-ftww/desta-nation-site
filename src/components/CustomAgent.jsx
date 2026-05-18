@@ -1,3 +1,5 @@
+import AgentHero from './AgentHero.jsx'
+
 export default function CustomAgent() {
   return (
     <section className="custom-section">
@@ -9,8 +11,18 @@ export default function CustomAgent() {
           <em>The standard platform covers front of house, kitchen, and beverage. When your operation needs something the core three don't — we build it.</em>
         </p>
 
+        <div className="reveal" style={{ maxWidth: '520px', margin: '3rem auto' }}>
+          <AgentHero
+            imageUrl="https://pub-1948b1b1579d47bc8925ba58d337f804.r2.dev/sebastian/Sebastian.png"
+            imageAlt="Sebastian — concierge intelligence"
+            videoUrl={null}
+          />
+          <p className="agent-role" style={{ marginTop: '1.5rem', textAlign: 'center' }}>Concierge Intelligence — example</p>
+          <h3 className="agent-name" style={{ textAlign: 'center' }}>Sebastian.</h3>
+        </div>
+
         <div className="custom-body reveal">
-          <p>We've built one ourselves — Sebastian, a multilingual concierge intelligence connected to a destination network spanning three continents. He's not part of the standard build because what he does is specific to our operation. But he's proof that an additional agent can become whatever your operation actually needs.</p>
+          <p>Sebastian is a multilingual concierge intelligence we built ourselves — connected to a destination network spanning three continents. He's not part of the standard build because what he does is specific to our operation. But he's proof that an additional agent can become whatever your operation actually needs.</p>
           <p><strong>Your fourth agent might be:</strong></p>
         </div>
 

@@ -1,3 +1,5 @@
+import AgentHero from './AgentHero.jsx'
+
 export default function Team() {
   return (
     <section className="agents-section">
@@ -14,11 +16,12 @@ export default function Team() {
         </div>
 
         <div className="agents-grid">
+
           <div className="agent-card reveal">
-            <img
-              src="https://pub-1948b1b1579d47bc8925ba58d337f804.r2.dev/the-sophie-project/SophieOffice.png"
-              alt="Sophie"
-              className="agent-portrait"
+            <AgentHero
+              imageUrl="https://pub-1948b1b1579d47bc8925ba58d337f804.r2.dev/the-sophie-project/SophieOffice.png"
+              imageAlt="Sophie at her desk"
+              videoUrl="https://pub-1948b1b1579d47bc8925ba58d337f804.r2.dev/the-sophie-project/Sophie_for_Desta-Nation.mp4"
             />
             <p className="agent-role">Administrative Intelligence</p>
             <h3 className="agent-name">Sophie.</h3>
@@ -31,10 +34,10 @@ export default function Team() {
           </div>
 
           <div className="agent-card reveal reveal-d1">
-            <img
-              src="https://pub-1948b1b1579d47bc8925ba58d337f804.r2.dev/Cellar_Rat_Morgon.png"
-              alt="Morgon"
-              className="agent-portrait"
+            <AgentHero
+              imageUrl="https://pub-1948b1b1579d47bc8925ba58d337f804.r2.dev/Cellar_Rat_Morgon.png"
+              imageAlt="Morgon, beverage companion"
+              videoUrl="https://pub-1948b1b1579d47bc8925ba58d337f804.r2.dev/Morgon-short-and-sweet.mp4"
             />
             <p className="agent-role">Beverage Intelligence</p>
             <h3 className="agent-name">Morgon.</h3>
@@ -47,10 +50,10 @@ export default function Team() {
           </div>
 
           <div className="agent-card reveal reveal-d2">
-            <img
-              src="https://pub-1948b1b1579d47bc8925ba58d337f804.r2.dev/Ernie.png"
-              alt="Ernie"
-              className="agent-portrait"
+            <AgentHero
+              imageUrl="https://pub-1948b1b1579d47bc8925ba58d337f804.r2.dev/Ernie.png"
+              imageAlt="Ernie, kitchen companion"
+              videoUrl="https://pub-1948b1b1579d47bc8925ba58d337f804.r2.dev/Ernie.mp4"
             />
             <p className="agent-role">Kitchen Intelligence</p>
             <h3 className="agent-name">Ernie.</h3>
@@ -61,6 +64,7 @@ export default function Team() {
               Your kitchen companion will be different. Built for your executive chef's workflow, your menu's complexity. Truly the companion to your executive chef.
             </p>
           </div>
+
         </div>
 
         <div className="team-tiers reveal">
