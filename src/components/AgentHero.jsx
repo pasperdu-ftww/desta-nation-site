@@ -1,13 +1,10 @@
-import { useState, useRef } from 'react'
+import { useState, useRef, useEffect } from 'react'
 
 /**
  * Big agent hero with inline video playback.
- * - Full-bleed portrait fills the card
- * - Transparent cinema arrow overlay until clicked
  * - Click → image swaps to the video, plays in place in the same frame
- * - No fullscreen overlay, no takeover — video lives where the image was
- * - Video has native controls so user can pause/scrub/close
- * - When video ends or user pauses + clicks the card, swaps back to image
+ * - No autoplay attribute. Play is triggered explicitly via ref AFTER the
+ *   user clicks, so we have a single deterministic code path and can log it.
  */
 export default function AgentHero({ imageUrl, imageAlt, videoUrl, aspectClass = 'agent-hero' }) {
   const [playing, setPlaying] = useState(false)
@@ -16,12 +13,24 @@ export default function AgentHero({ imageUrl, imageAlt, videoUrl, aspectClass = 
   function play(e) {
     if (!videoUrl || playing) return
     e?.stopPropagation()
+    console.log('[AgentHero] play triggered by user click:', { src: videoUrl, eventType: e?.type, target: e?.target?.tagName })
     setPlaying(true)
   }
 
   function handleEnded() {
     setPlaying(false)
   }
+
+  // Explicit play after the video element mounts. Only happens because
+  // setPlaying(true) was called, which only happens in onClick.
+  useEffect(() => {
+    if (playing && videoRef.current) {
+      console.log('[AgentHero] calling video.play() on mounted element')
+      videoRef.current.play().catch((err) => {
+        console.error('[AgentHero] play failed:', err)
+      })
+    }
+  }, [playing])
 
   return (
     <div className={aspectClass} onClick={!playing ? play : undefined} role={videoUrl && !playing ? 'button' : undefined} tabIndex={videoUrl && !playing ? 0 : undefined}>
@@ -34,7 +43,6 @@ export default function AgentHero({ imageUrl, imageAlt, videoUrl, aspectClass = 
             ref={videoRef}
             className="agent-hero-video"
             src={videoUrl}
-            autoPlay
             controls
             controlsList="nofullscreen nodownload noremoteplayback"
             disablePictureInPicture

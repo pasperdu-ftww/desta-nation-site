@@ -1,17 +1,28 @@
-import { useState } from 'react'
+import { useState, useRef, useEffect } from 'react'
 
 export default function Video() {
   const [playing, setPlaying] = useState(false)
+  const videoRef = useRef(null)
 
   function play(e) {
     if (playing) return
     e?.stopPropagation()
+    console.log('[Video proof-of-concept] play triggered by user click:', { eventType: e?.type, target: e?.target?.tagName })
     setPlaying(true)
   }
 
   function handleEnded() {
     setPlaying(false)
   }
+
+  useEffect(() => {
+    if (playing && videoRef.current) {
+      console.log('[Video proof-of-concept] calling video.play() on mounted element')
+      videoRef.current.play().catch((err) => {
+        console.error('[Video proof-of-concept] play failed:', err)
+      })
+    }
+  }, [playing])
 
   return (
     <section className="video-section" id="proof">
@@ -35,9 +46,9 @@ export default function Video() {
             {playing && (
               <>
                 <video
+                  ref={videoRef}
                   className="video-thumb-video"
                   src="https://pub-1948b1b1579d47bc8925ba58d337f804.r2.dev/the-sophie-project/Sophie_for_Desta-Nation.mp4"
-                  autoPlay
                   controls
                   controlsList="nofullscreen nodownload noremoteplayback"
                   disablePictureInPicture
