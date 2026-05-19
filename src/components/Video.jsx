@@ -43,8 +43,8 @@ export default function Video() {
           <div className="video-frame reveal reveal-d3" onClick={openVideo}>
             <div className="video-thumb">
               <img
-                src="https://pub-1948b1b1579d47bc8925ba58d337f804.r2.dev/the-sophie-project/Sophie2026.png"
-                alt="Sophie"
+                src="https://pub-1948b1b1579d47bc8925ba58d337f804.r2.dev/the-sophie-project/SophieOffice.png"
+                alt="Sophie at her desk in the Meritage office"
                 className="video-thumb-hero"
               />
               <div className="play-ring">
