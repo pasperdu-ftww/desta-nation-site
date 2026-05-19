@@ -532,6 +532,28 @@ nav {
   transition: transform 0.6s ease;
 }
 
+/* Inline video — swaps in place of the hero image when play is clicked.
+   Same dimensions, same frame, no overlay takeover. */
+.agent-hero-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  background: var(--navy-dark);
+  z-index: 3;
+}
+
+.video-thumb-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  background: var(--navy-dark);
+  z-index: 3;
+}
+
 .agent-hero:hover .agent-hero-img { transform: scale(1.03); }
 
 .agent-hero::after {
