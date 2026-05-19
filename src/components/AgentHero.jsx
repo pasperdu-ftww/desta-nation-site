@@ -43,8 +43,8 @@ export default function AgentHero({ imageUrl, imageAlt, videoUrl, aspectClass = 
         <img src={imageUrl} alt={imageAlt} className="agent-hero-img" />
         {videoUrl ? (
           <div className="agent-hero-play">
-            <svg width="14" height="16" viewBox="0 0 16 18" fill="none">
-              <path d="M2 1.5L14 9L2 16.5V1.5Z" fill="#0E1C30" />
+            <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M36 26 L74 50 L36 74 Z" fill="rgba(250,248,245,0.95)" stroke="rgba(250,248,245,0.2)" strokeWidth="1" strokeLinejoin="round" />
             </svg>
           </div>
         ) : (
