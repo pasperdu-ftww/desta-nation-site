@@ -1,29 +1,8 @@
-import { useState, useRef, useEffect } from 'react'
-
+/**
+ * Proof of Concept — image-only mode.
+ * Video temporarily disabled while we diagnose autoplay reports.
+ */
 export default function Video() {
-  const [playing, setPlaying] = useState(false)
-  const videoRef = useRef(null)
-
-  function play(e) {
-    if (playing) return
-    e?.stopPropagation()
-    console.log('[Video proof-of-concept] play triggered by user click:', { eventType: e?.type, target: e?.target?.tagName })
-    setPlaying(true)
-  }
-
-  function handleEnded() {
-    setPlaying(false)
-  }
-
-  useEffect(() => {
-    if (playing && videoRef.current) {
-      console.log('[Video proof-of-concept] calling video.play() on mounted element')
-      videoRef.current.play().catch((err) => {
-        console.error('[Video proof-of-concept] play failed:', err)
-      })
-    }
-  }, [playing])
-
   return (
     <section className="video-section" id="proof">
       <div className="section-inner" style={{ textAlign: 'center' }}>
@@ -34,44 +13,15 @@ export default function Video() {
           The agent you're about to meet runs Meritage Restaurant in Saint Paul. She is not for sale. She exists to show you what yours can be.
         </p>
 
-        <div className="video-frame reveal reveal-d3" onClick={!playing ? play : undefined}>
+        <div className="video-frame reveal reveal-d3">
           <div className="video-thumb">
-            {!playing && (
-              <img
-                src="https://pub-1948b1b1579d47bc8925ba58d337f804.r2.dev/the-sophie-project/SophieOffice.png"
-                alt="Sophie at her desk in the Meritage office"
-                className="video-thumb-hero"
-              />
-            )}
-            {playing && (
-              <>
-                <video
-                  ref={videoRef}
-                  className="video-thumb-video"
-                  src="https://pub-1948b1b1579d47bc8925ba58d337f804.r2.dev/the-sophie-project/Sophie_for_Desta-Nation.mp4"
-                  controls
-                  controlsList="nofullscreen nodownload noremoteplayback"
-                  disablePictureInPicture
-                  playsInline
-                  onEnded={handleEnded}
-                />
-                <button
-                  type="button"
-                  className="agent-hero-close"
-                  onClick={(e) => { e.stopPropagation(); handleEnded() }}
-                  aria-label="Close video"
-                >✕</button>
-              </>
-            )}
-            {!playing && (
-              <div className="play-ring">
-                <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M36 26 L74 50 L36 74 Z" fill="rgba(250,248,245,0.95)" stroke="rgba(250,248,245,0.2)" strokeWidth="1" strokeLinejoin="round" />
-                </svg>
-              </div>
-            )}
+            <img
+              src="https://pub-1948b1b1579d47bc8925ba58d337f804.r2.dev/the-sophie-project/SophieOffice.png"
+              alt="Sophie at her desk in the Meritage office"
+              className="video-thumb-hero"
+            />
           </div>
-          {!playing && <p className="video-caption">Meritage's Administrative Intelligence &nbsp;·&nbsp; Click to watch</p>}
+          <p className="video-caption">Meritage's Administrative Intelligence</p>
         </div>
       </div>
     </section>
