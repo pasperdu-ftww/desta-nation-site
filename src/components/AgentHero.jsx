@@ -35,6 +35,8 @@ export default function AgentHero({ imageUrl, imageAlt, videoUrl, aspectClass = 
           src={videoUrl}
           autoPlay
           controls
+          controlsList="nofullscreen nodownload noremoteplayback"
+          disablePictureInPicture
           playsInline
           onEnded={handleEnded}
         />

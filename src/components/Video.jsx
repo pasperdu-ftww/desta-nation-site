@@ -38,6 +38,8 @@ export default function Video() {
                 src="https://pub-1948b1b1579d47bc8925ba58d337f804.r2.dev/the-sophie-project/Sophie_for_Desta-Nation.mp4"
                 autoPlay
                 controls
+                controlsList="nofullscreen nodownload noremoteplayback"
+                disablePictureInPicture
                 playsInline
                 onEnded={handleEnded}
               />
