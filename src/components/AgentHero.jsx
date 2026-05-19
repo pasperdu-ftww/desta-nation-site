@@ -29,17 +29,25 @@ export default function AgentHero({ imageUrl, imageAlt, videoUrl, aspectClass = 
         <img src={imageUrl} alt={imageAlt} className="agent-hero-img" />
       )}
       {playing && videoUrl && (
-        <video
-          ref={videoRef}
-          className="agent-hero-video"
-          src={videoUrl}
-          autoPlay
-          controls
-          controlsList="nofullscreen nodownload noremoteplayback"
-          disablePictureInPicture
-          playsInline
-          onEnded={handleEnded}
-        />
+        <>
+          <video
+            ref={videoRef}
+            className="agent-hero-video"
+            src={videoUrl}
+            autoPlay
+            controls
+            controlsList="nofullscreen nodownload noremoteplayback"
+            disablePictureInPicture
+            playsInline
+            onEnded={handleEnded}
+          />
+          <button
+            type="button"
+            className="agent-hero-close"
+            onClick={(e) => { e.stopPropagation(); handleEnded() }}
+            aria-label="Close video"
+          >✕</button>
+        </>
       )}
       {!playing && videoUrl && (
         <div className="agent-hero-play">

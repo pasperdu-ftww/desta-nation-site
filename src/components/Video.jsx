@@ -33,16 +33,24 @@ export default function Video() {
               />
             )}
             {playing && (
-              <video
-                className="video-thumb-video"
-                src="https://pub-1948b1b1579d47bc8925ba58d337f804.r2.dev/the-sophie-project/Sophie_for_Desta-Nation.mp4"
-                autoPlay
-                controls
-                controlsList="nofullscreen nodownload noremoteplayback"
-                disablePictureInPicture
-                playsInline
-                onEnded={handleEnded}
-              />
+              <>
+                <video
+                  className="video-thumb-video"
+                  src="https://pub-1948b1b1579d47bc8925ba58d337f804.r2.dev/the-sophie-project/Sophie_for_Desta-Nation.mp4"
+                  autoPlay
+                  controls
+                  controlsList="nofullscreen nodownload noremoteplayback"
+                  disablePictureInPicture
+                  playsInline
+                  onEnded={handleEnded}
+                />
+                <button
+                  type="button"
+                  className="agent-hero-close"
+                  onClick={(e) => { e.stopPropagation(); handleEnded() }}
+                  aria-label="Close video"
+                >✕</button>
+              </>
             )}
             {!playing && (
               <div className="play-ring">
